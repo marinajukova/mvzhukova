@@ -1,0 +1,16 @@
+inFile = open('text.txt')
+for line in inFile:
+    if (len(line) > 20):
+        print(line)
+        
+inFile = open('text.txt')        
+dct = {}
+for line in inFile:
+    count = 0
+    for symb in line:
+        if not(symb in dct.keys()): 
+            dct[symb] = count
+            count += 1
+            for symb in dct:
+                print(symb, dct[symb])
+
