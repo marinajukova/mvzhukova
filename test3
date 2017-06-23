@@ -42,5 +42,15 @@ for text in texts:
             elif letter == ' ':
                 pos = 'out'     
  
+#lines = in_file.readlines()
+#maxi = 0
+#words = {}
+#for line in lines:
+#temp = line.split()
+#for word in temp:
+#if word in words:
+#else:
+#words[word] = 1
+ 
 with open ('words_number.txt', 'w', encoding='utf-8') as firstdoc:
         firstdoc.write(fname,'\t', words)
