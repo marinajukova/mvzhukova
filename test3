@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+
+import re
+import os
+import shutil 
+import csv
+import sys
+
+
+name = os.listdir(os.getcwd())
+
+def readpage():
+    for m in name:
+        texts_arr = []
+        with open (m, 'r', encoding='cp1251') as source:
+            text=source.read()
+            tokens=text.split()
+            bare_tokens=[]
+            for i in range(len(tokens)):
+                token=tokens[i]
+                token=token.strip(',!?");:|—')
+                bare_tokens.append(token)
+                newtext=' '.join(bare_tokens)
+                texts_arr.append (newtext)
+                return texts_arr
+            
+texts = readpage()
+
+for text in texts:
+    lines = 0
+    words = 0
+    letters = 0
+
+    for line in open(name):
+        lines += 1
+        letters += len(line)
+        pos = 'out'
+        for letter in line:
+            if letter != ' ' and pos == 'out':
+                words += 1
+                pos = 'in'
+            elif letter == ' ':
+                pos = 'out'     
+ 
+with open ('words_number.txt', 'w', encoding='utf-8') as firstdoc:
+        firstdoc.write(fname,'\t', words)
